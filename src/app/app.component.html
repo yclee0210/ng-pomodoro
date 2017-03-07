@@ -1,14 +1,53 @@
 <clr-main-container>
-  <clr-header>
+  <header class="header-6">
     <div class="branding">
-      <a href="" class="nav-link">
-        <span class="title">{{title}}</span>
+      <a href="..." class="nav-link">
+        <clr-icon shape="alarm-clock" class="is-inverse"></clr-icon>
+        <span class="title">ng-Pomodoro</span>
       </a>
     </div>
-  </clr-header>
+    <div class="header-actions">
+      <clr-dropdown class="dropdown bottom-right">
+        <button class="nav-icon" clrDropdownToggle>
+          <clr-icon shape="cog"></clr-icon>
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <div class="dropdown-menu">
+          <a href="..." clrDropdownItem>About</a>
+          <a href="..." clrDropdownItem>Preferences</a>
+          <a href="..." clrDropdownItem>Log out</a>
+        </div>
+      </clr-dropdown>
+    </div>
+  </header>
+  <nav class="sub-nav" [clr-nav-level]="1">
+    <ul class="nav">
+      <li class="nav-item">
+        <a href="#" class="nav-link">Pomodoro</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">Analytics</a>
+      </li>
+    </ul>
+  </nav>
   <div class="content-container">
     <div class="content-area">
-      <app-pomodoro-runner></app-pomodoro-runner>
+      <div class="row page">
+        <div class="pomodoro">
+          <div class="timer">
+            <h1>23:48</h1>
+          </div>
+
+          <div class="single-task-form">
+            <input type="text" placeholder="Create a new task here">
+          </div>
+          <div class="timer-controls">
+            <clr-icon shape="play" class="is-highlight"></clr-icon>
+            <clr-icon shape="pause"></clr-icon>
+            <clr-icon shape="stop" class="is-error"></clr-icon>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </clr-main-container>

@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { ClarityModule } from 'clarity-angular';
 
 import { AppComponent } from './app.component';
-import { PomodoroRunnerModule } from './pomodoro-runner/pomodoro-runner.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +14,7 @@ import { PomodoroRunnerModule } from './pomodoro-runner/pomodoro-runner.module';
     BrowserModule,
     ClarityModule.forRoot(),
     FormsModule,
-    HttpModule,
-    PomodoroRunnerModule
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
