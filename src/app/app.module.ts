@@ -1,10 +1,11 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import { ClarityModule } from 'clarity-angular';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {ClarityModule} from 'clarity-angular';
+import {PomodoroModule} from './pomodoro/pomodoro.module';
+import {StoreModule} from '@ngrx/store';
+import {selectedTask} from './selected-task.reducer';
 
 @NgModule({
   declarations: [
@@ -13,10 +14,13 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     ClarityModule.forRoot(),
-    FormsModule,
-    HttpModule
+    PomodoroModule,
+    StoreModule.provideStore({
+      selectedTask: selectedTask
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
