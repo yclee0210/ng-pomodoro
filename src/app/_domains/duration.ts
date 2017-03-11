@@ -3,6 +3,6 @@
  */
 
 export interface Duration {
-  start: any;
-  end: any;
+  start: string;
+  end: string;
 }
