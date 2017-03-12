@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {TasksService} from './tasks.service';
-import {TaskState} from './task-state.enum';
+import {TaskState} from '../_enums/task-state.enum';
 import * as moment from 'moment';
 import {TimerObservable} from 'rxjs/observable/TimerObservable';
 import {TaskSelectService} from './task-select.service';

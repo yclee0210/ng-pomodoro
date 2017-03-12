@@ -1,5 +1,5 @@
 import {StateObject} from './state-object';
-import {TaskState} from '../pomodoro/task-state.enum';
+import {TaskState} from '../_enums/task-state.enum';
 import {Pomodoro} from './pomodoro';
 import {Duration} from './duration';
 
