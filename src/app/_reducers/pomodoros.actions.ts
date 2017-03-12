@@ -1,5 +1,4 @@
 import {ActionReducer, Action} from '@ngrx/store';
-import {Task} from '../_domains/task';
 import {Pomodoro} from '../_domains/pomodoro';
 import {PomodoroState} from '../_enums/pomodoro-state.enum';
 import * as moment from 'moment';
