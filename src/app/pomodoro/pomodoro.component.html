@@ -16,3 +16,4 @@
   </div>
   <p>Selected Task: {{task ? task.name : ''}}</p>
 </div>
+<li *ngFor="let task of tasks; let i = index;">{{task.name}} {{task.pomodoros.length}}</li>
