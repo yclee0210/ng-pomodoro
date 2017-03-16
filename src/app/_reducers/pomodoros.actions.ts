@@ -50,6 +50,7 @@ export namespace PomodorosActions {
 
           currentTask.end = moment().toISOString();
         }
+        currentTask.pomodoroState = PomodoroState.COMPLETED;
 
         return newState;
 

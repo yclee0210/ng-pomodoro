@@ -50,6 +50,62 @@ describe('PomodorosActions Test', () => {
       expect(then[0].state).toEqual(ObjectState.ACTIVE);
     });
   });
+
+  describe('Action: PAUSE', () => {
+    it('should update the latest pomodoro with a new pause starting point', () => {
+      const given = testFactory.getList();
+
+      const when: Action = {type: PomodorosActions.PAUSE};
+
+      const then: Pomodoro[] = PomodorosActions.reducer(given, when);
+      expect(then.length).toEqual(2);
+      expect(then[0].pauses.length).toEqual(1);
+      expect(then[0].pomodoroState).toEqual(PomodoroState.PAUSED);
+      expect(typeof then[0].pauses[0].start).toEqual('string');
+    });
+  });
+
+  describe('Action: RESUME', () => {
+    it('should change pState to PLAYING and add end time to the first pause', () => {
+      const given = PomodorosActions.reducer(testFactory.getList(), {type: PomodorosActions.PAUSE});
+
+      const when: Action = {type: PomodorosActions.RESUME};
+
+      const then: Pomodoro[] = PomodorosActions.reducer(given, when);
+      expect(then.length).toEqual(2);
+      expect(then[0].pauses.length).toEqual(1);
+      expect(then[0].pomodoroState).toEqual(PomodoroState.PLAYING);
+      expect(typeof then[0].pauses[0].start).toEqual('string');
+      expect(typeof then[0].pauses[0].end).toEqual('string');
+    });
+  });
+
+  describe('Action: STOP', () => {
+    it('should change pState to COMPLETED from PAUSED with previous pause start time as end', () => {
+      const given = PomodorosActions.reducer(testFactory.getList(), {type: PomodorosActions.PAUSE});
+      const pauseStart = given[0].pauses[0].start;
+
+      const when: Action = {type: PomodorosActions.STOP};
+
+      const then: Pomodoro[] = PomodorosActions.reducer(given, when);
+      expect(then.length).toEqual(2);
+      expect(then[0].pauses.length).toEqual(0);
+      expect(then[0].pomodoroState).toEqual(PomodoroState.COMPLETED);
+      expect(then[0].end).toEqual(pauseStart);
+    });
+
+    it('should change pState to COMPLETED from PLAYING and set end time', () => {
+      const given = PomodorosActions.reducer(testFactory.getList(), {type: PomodorosActions.PLAY});
+
+      const when: Action = {type: PomodorosActions.STOP};
+
+      const then: Pomodoro[] = PomodorosActions.reducer(given, when);
+      expect(then.length).toEqual(3);
+      expect(then[0].pauses.length).toEqual(0);
+      expect(then[0].pomodoroState).toEqual(PomodoroState.COMPLETED);
+      expect(typeof then[0].end).toEqual('string');
+    });
+  });
 });
 
 class PomodorosTestFactory {
