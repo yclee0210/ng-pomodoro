@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {TaskState} from '../_enums/task-state.enum';
 import {ObjectState} from '../_enums/object-state.enum';
 import {Task} from '../_domains/task';
-import {Tasks} from '../_reducers/tasks.reducer';
+import {TasksActions} from '../_reducers/tasks.actions';
 
 @Injectable()
 export class TasksService {
@@ -30,7 +30,7 @@ export class TasksService {
       end: null
     };
 
-    this._store.dispatch({type: Tasks.CREATE_AND_SELECT_TASK, payload: task});
+    this._store.dispatch({type: TasksActions.CREATE_AND_SELECT_TASK, payload: task});
   }
 
   private _getNextId(): number {
