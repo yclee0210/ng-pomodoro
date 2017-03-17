@@ -9,11 +9,10 @@ export class PomodoroService {
 
   constructor(private _store: Store<any>) {
     this._pomodoroCount = 0;
-
   }
 
   play(taskId: number) {
-    this._pomodoroCount = (this._pomodoroCount + 1) % 3;
+
     this._store.dispatch({type: PomodorosActions.PLAY, payload: taskId});
   }
 
@@ -28,7 +27,7 @@ export class PomodoroService {
   }
 
   next() {
-
+    this._pomodoroCount = (this._pomodoroCount + 1) % 4;
     this._store.dispatch({type: PomodorosActions.STOP});
     if (this._pomodoroCount === 0) {
       return PomodoroStage.LONG_BREAK;
