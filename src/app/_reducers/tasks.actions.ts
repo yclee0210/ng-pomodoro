@@ -2,11 +2,11 @@ import {ActionReducer, Action} from '@ngrx/store';
 import {Task} from '../_domains/task';
 const INIT = 'INIT';
 
-export namespace Tasks {
-  export const CREATE_AND_SELECT_TASK = 'CREATE_AND_SELECT_TASK';
-  export const CREATE_TASK = 'CREATE_TASK';
-  export const DELETE_TASK = 'REMOVE_TASK';
-  export const UPDATE_TASK = 'UPDATE_TASK';
+export namespace TasksActions {
+  export const CREATE_AND_SELECT_TASK = 'TasksActions.CREATE_AND_SELECT';
+  export const CREATE_TASK = 'TasksActions.CREATE';
+  export const UPDATE_TASK = 'TasksActions.UPDATE';
+  export const DELETE_TASK = 'TasksActions.REMOVE';
 
   const initialState: Task[] = [];
 
@@ -15,7 +15,9 @@ export namespace Tasks {
     switch (action.type) {
       case CREATE_AND_SELECT_TASK:
       case CREATE_TASK:
-        return Object.assign([], state.concat([action.payload]));
+
+        state.unshift(action.payload);
+        return state;
 
       case UPDATE_TASK:
         return state.map((task: Task) => {

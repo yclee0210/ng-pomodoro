@@ -4,7 +4,7 @@ import {Action} from '@ngrx/store';
 import {PomodorosActions} from './pomodoros.actions';
 import {Pomodoro} from '../_domains/pomodoro';
 
-describe('PomodorosActions Test', () => {
+describe('PomodorosActions', () => {
   let testFactory: PomodorosTestFactory;
 
   beforeEach(() => {
