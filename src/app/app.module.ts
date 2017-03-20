@@ -6,7 +6,7 @@ import {ClarityModule} from 'clarity-angular';
 import {PomodoroModule} from './pomodoro/pomodoro.module';
 import {StoreModule} from '@ngrx/store';
 import {TaskSelectActions} from './_reducers/task-select.actions';
-import {Tasks} from './_reducers/tasks.reducer';
+import {TasksActions} from './_reducers/tasks.actions';
 import {PomodorosActions} from './_reducers/pomodoros.actions';
 
 @NgModule({
@@ -18,7 +18,7 @@ import {PomodorosActions} from './_reducers/pomodoros.actions';
     ClarityModule.forRoot(),
     PomodoroModule,
     StoreModule.provideStore({
-      tasks: Tasks.reducer,
+      tasks: TasksActions.reducer,
       selectedTask: TaskSelectActions.reducer,
       pomodoros: PomodorosActions.reducer
     })
