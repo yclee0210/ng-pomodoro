@@ -1,5 +1,8 @@
 import {ActionReducer, Action} from '@ngrx/store';
 import {Task} from '../_domains/task';
+import {TaskState} from '../_enums/task-state.enum';
+import {ObjectState} from '../_enums/object-state.enum';
+
 const INIT = 'INIT';
 
 export namespace TasksActions {
@@ -16,7 +19,7 @@ export namespace TasksActions {
       case CREATE_AND_SELECT_TASK:
       case CREATE_TASK:
 
-        state.unshift(action.payload);
+        state.unshift(createTask(action.payload, state));
         return state;
 
       case UPDATE_TASK:
@@ -32,4 +35,22 @@ export namespace TasksActions {
         return state;
     }
   };
+
+  const createTask = (name: string, tasks: Task[]) => {
+    return {
+      id: getNextId(tasks),
+      name: name,
+      pomodoros: [],
+      taskState: TaskState.UNTOUCHED,
+      state: ObjectState.ACTIVE,
+      start: null,
+      end: null
+    }
+  };
+
+  const getNextId = (tasks: Task[]) => {
+
+    if (tasks.length === 0) return 1;
+    else return tasks[0].id + 1;
+  }
 }

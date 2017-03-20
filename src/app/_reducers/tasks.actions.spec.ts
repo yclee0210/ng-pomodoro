@@ -17,12 +17,13 @@ describe('TasksActions', () => {
     it('should add payload to front of current task list', () => {
       const given = testFactory.getTestTasks();
 
-      const payload = testFactory.getTestTask(3);
+      const payload = 'NEW_TASK';
       const when = {type: TasksActions.CREATE_AND_SELECT_TASK, payload: payload};
 
       const then = TasksActions.reducer(given, when);
       expect(then.length).toEqual(3);
       expect(then[0].id).toEqual(3);
+      expect(then[0].name).toEqual(payload);
     });
   });
 
@@ -30,12 +31,13 @@ describe('TasksActions', () => {
     it('should add payload to front of current task list', () => {
       const given = testFactory.getTestTasks();
 
-      const payload = testFactory.getTestTask(3);
+      const payload = 'NEW_TASK';
       const when = {type: TasksActions.CREATE_AND_SELECT_TASK, payload: payload};
 
       const then = TasksActions.reducer(given, when);
       expect(then.length).toEqual(3);
       expect(then[0].id).toEqual(3);
+      expect(then[0].name).toEqual(payload);
     });
   });
 
@@ -49,7 +51,7 @@ describe('TasksActions', () => {
 
       const then = TasksActions.reducer(given, when);
       expect(then.length).toEqual(2);
-      expect(then[1].name).toEqual('New Task');
+      expect(then[0].name).toEqual('New Task');
     });
   });
 
@@ -83,8 +85,8 @@ class TasksTestFactory {
   getTestTasks(): Task[] {
 
     return [
-      this.getTestTask(1),
-      this.getTestTask(2)
+      this.getTestTask(2),
+      this.getTestTask(1)
     ]
   }
 }
