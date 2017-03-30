@@ -3,12 +3,7 @@
     <h1>{{remainingTime.format('mm:ss')}}</h1>
   </div>
 
-  <div class="single-task-form">
-    <form novalidate (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
-      <input type="text" formControlName="name" placeholder="Create a new task here">
-      <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Create</button>
-    </form>
-  </div>
+  <app-quick-task-form></app-quick-task-form>
   <div class="timer-controls">
     <clr-icon shape="play" class="is-highlight" (click)="start()"></clr-icon>
     <clr-icon shape="pause" (click)="pause()"></clr-icon>

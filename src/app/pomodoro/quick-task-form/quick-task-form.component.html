@@ -1,0 +1,6 @@
+<div class="single-task-form">
+  <form novalidate (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
+    <input type="text" formControlName="name" placeholder="Create a new task here">
+    <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Create</button>
+  </form>
+</div>
