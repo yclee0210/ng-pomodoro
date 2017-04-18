@@ -76,6 +76,21 @@ describe('PomodoroService', () => {
     );
   });
 
+  describe('method: stop', () => {
+    it('should dispatch stop', inject(
+      [PomodoroService, Store],
+      (service: PomodoroService, store: Store<any>) => {
+        spyOn(store, 'dispatch');
+
+        service.stop();
+
+        expect(store.dispatch).toHaveBeenCalledWith({
+          type: PomodorosActions.STOP
+        });
+      })
+    );
+  });
+
   describe('method: next', () => {
     it('should dispatch STOP and return SHORT_BREAK on 1,2,3th next and LONG_BREAK on 4th', inject(
       [PomodoroService, Store],
