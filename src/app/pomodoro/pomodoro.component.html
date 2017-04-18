@@ -3,17 +3,8 @@
     <h1>{{remainingTime.format('mm:ss')}}</h1>
   </div>
 
-  <div class="single-task-form">
-    <form novalidate (ngSubmit)="onSubmit(taskForm)" [formGroup]="taskForm">
-      <input type="text" formControlName="name" placeholder="Create a new task here">
-      <button type="submit" class="btn btn-primary" [disabled]="taskForm.invalid">Create</button>
-    </form>
-  </div>
-  <div class="timer-controls">
-    <clr-icon shape="play" class="is-highlight" (click)="start()"></clr-icon>
-    <clr-icon shape="pause" (click)="pause()"></clr-icon>
-    <clr-icon shape="stop" class="is-error" (click)="stop()"></clr-icon>
-  </div>
+  <app-quick-task-form></app-quick-task-form>
+  <app-pomodoro-controls></app-pomodoro-controls>
   <p>Selected Task: {{task ? task.name : ''}}</p>
 </div>
 <li *ngFor="let task of tasks; let i = index;">{{task.name}} {{task.pomodoros.length}}</li>

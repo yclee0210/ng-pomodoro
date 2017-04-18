@@ -19,7 +19,6 @@ const SHORT_BREAK_DURATION = 5 * 60 * 1000;
   styleUrls: ['./pomodoro.component.scss']
 })
 export class PomodoroComponent implements OnInit, OnDestroy {
-  taskForm: FormGroup;
   task: Task;
   remainingTime: any;
   timer: any;
@@ -32,8 +31,7 @@ export class PomodoroComponent implements OnInit, OnDestroy {
 
   constructor(private _task: TasksService,
               private _taskSelect: TaskSelectService,
-              private _pomodoro: PomodoroService,
-              private _formBuilder: FormBuilder) {
+              private _pomodoro: PomodoroService) {
     this.subscription = this._taskSelect.selectedTask$.subscribe(task => this.task = task);
 
     this.tasksSubscription = this._task.tasks$.subscribe((data) => {
@@ -43,18 +41,7 @@ export class PomodoroComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.taskForm = this._formBuilder.group({
-      name: ['', Validators.required]
-    });
     this.remainingTime = moment(DEFAULT_TASK_DURATION);
-  }
-
-  onSubmit({value, valid}: {value: any, valid: boolean}) {
-    if (valid) {
-
-      this._task.createAndSelect(value.name);
-      this.taskForm.reset();
-    }
   }
 
   start() {

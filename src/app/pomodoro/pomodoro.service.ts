@@ -26,6 +26,11 @@ export class PomodoroService {
     this._store.dispatch({type: PomodorosActions.RESUME});
   }
 
+  stop() {
+
+    this._store.dispatch({type: PomodorosActions.STOP});
+  }
+
   next() {
     this._pomodoroCount = (this._pomodoroCount + 1) % 4;
     this._store.dispatch({type: PomodorosActions.STOP});
