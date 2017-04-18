@@ -9,6 +9,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {TaskSelectService} from './task-select.service';
 import {PomodoroService} from './pomodoro.service';
 import { QuickTaskFormComponent } from './quick-task-form/quick-task-form.component';
+import { PomodoroControlsComponent } from './pomodoro-controls/pomodoro-controls.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { QuickTaskFormComponent } from './quick-task-form/quick-task-form.compon
     TaskSelectService,
     PomodoroService
   ],
-  declarations: [PomodoroComponent, QuickTaskFormComponent],
+  declarations: [PomodoroComponent, QuickTaskFormComponent, PomodoroControlsComponent],
   exports: [PomodoroComponent]
 })
 export class PomodoroModule {
