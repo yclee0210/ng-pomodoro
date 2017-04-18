@@ -4,11 +4,7 @@
   </div>
 
   <app-quick-task-form></app-quick-task-form>
-  <div class="timer-controls">
-    <clr-icon shape="play" class="is-highlight" (click)="start()"></clr-icon>
-    <clr-icon shape="pause" (click)="pause()"></clr-icon>
-    <clr-icon shape="stop" class="is-error" (click)="stop()"></clr-icon>
-  </div>
+  <app-pomodoro-controls></app-pomodoro-controls>
   <p>Selected Task: {{task ? task.name : ''}}</p>
 </div>
 <li *ngFor="let task of tasks; let i = index;">{{task.name}} {{task.pomodoros.length}}</li>
