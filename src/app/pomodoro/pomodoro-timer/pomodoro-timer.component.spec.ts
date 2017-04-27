@@ -4,21 +4,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { PomodoroComponent } from './pomodoro.component';
+import { PomodoroTimerComponent } from './pomodoro-timer.component';
 
-describe('PomodoroComponent', () => {
-  let component: PomodoroComponent;
-  let fixture: ComponentFixture<PomodoroComponent>;
+describe('PomodoroTimerComponent', () => {
+  let component: PomodoroTimerComponent;
+  let fixture: ComponentFixture<PomodoroTimerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PomodoroComponent ]
+      declarations: [ PomodoroTimerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PomodoroComponent);
+    fixture = TestBed.createComponent(PomodoroTimerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
