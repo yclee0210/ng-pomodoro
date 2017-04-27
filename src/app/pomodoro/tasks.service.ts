@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
-import {TaskState} from '../_enums/task-state.enum';
-import {ObjectState} from '../_enums/object-state.enum';
 import {Task} from '../_domains/task';
 import {TasksActions} from '../_reducers/tasks.actions';
 
