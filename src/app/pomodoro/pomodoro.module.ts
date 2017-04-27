@@ -8,22 +8,32 @@ import {TasksEffects} from './tasks.effect';
 import {EffectsModule} from '@ngrx/effects';
 import {TaskSelectService} from './task-select.service';
 import {PomodoroService} from './pomodoro.service';
-import { QuickTaskFormComponent } from './quick-task-form/quick-task-form.component';
-import { PomodoroControlsComponent } from './pomodoro-controls/pomodoro-controls.component';
+import {QuickTaskFormComponent} from './quick-task-form/quick-task-form.component';
+import {PomodoroControlsComponent} from './pomodoro-controls/pomodoro-controls.component';
+import {PomodoroTimerComponent} from './pomodoro-timer/pomodoro-timer.component';
+import {PomodoroSettingsService} from './pomodoro-settings.service';
+import {TimerService} from './timer.service';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     SharedModule,
-    EffectsModule.run(TasksEffects)
+    EffectsModule.run(TasksEffects),
   ],
   providers: [
     TasksService,
     TaskSelectService,
-    PomodoroService
+    PomodoroService,
+    PomodoroSettingsService,
+    TimerService
   ],
-  declarations: [PomodoroComponent, QuickTaskFormComponent, PomodoroControlsComponent],
+  declarations: [
+    PomodoroComponent,
+    QuickTaskFormComponent,
+    PomodoroControlsComponent,
+    PomodoroTimerComponent
+  ],
   exports: [PomodoroComponent]
 })
 export class PomodoroModule {
