@@ -6,10 +6,11 @@ import {Task} from '../_domains/task';
 
 @Injectable()
 export class TaskSelectService {
-  selectedTask$: Observable<any>;
+  selectedTask$: Observable<Task>;
 
   constructor(private _store: Store<any>) {
-    this.selectedTask$ = this._store.select('selectedTask');
+
+    this.selectedTask$ = this._store.select<Task>('selectedTask');
   }
 
   select(task: Task) {
