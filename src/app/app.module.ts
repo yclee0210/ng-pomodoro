@@ -8,6 +8,7 @@ import {StoreModule} from '@ngrx/store';
 import {TaskSelectActions} from './_reducers/task-select.actions';
 import {TasksActions} from './_reducers/tasks.actions';
 import {PomodorosActions} from './_reducers/pomodoros.actions';
+import {TimerActions} from './_reducers/timer.actions';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {PomodorosActions} from './_reducers/pomodoros.actions';
     StoreModule.provideStore({
       tasks: TasksActions.reducer,
       selectedTask: TaskSelectActions.reducer,
-      pomodoros: PomodorosActions.reducer
+      pomodoros: PomodorosActions.reducer,
+      timer: TimerActions.reducer
     })
   ],
   providers: [],

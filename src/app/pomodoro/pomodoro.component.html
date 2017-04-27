@@ -1,10 +1,7 @@
 <div class="pomodoro">
-  <div class="timer">
-    <h1>{{remainingTime.format('mm:ss')}}</h1>
-  </div>
-
+  <app-pomodoro-timer></app-pomodoro-timer>
   <app-quick-task-form></app-quick-task-form>
   <app-pomodoro-controls></app-pomodoro-controls>
-  <p>Selected Task: {{task ? task.name : ''}}</p>
+  <p>Selected Task: {{task}}</p>
 </div>
 <li *ngFor="let task of tasks; let i = index;">{{task.name}} {{task.pomodoros.length}}</li>

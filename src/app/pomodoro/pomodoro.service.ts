@@ -1,14 +1,16 @@
 import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {PomodorosActions} from '../_reducers/pomodoros.actions';
-import {PomodoroStage} from '../_enums/pomodoro-stage.enum';
+import {PomodoroSettingsService} from './pomodoro-settings.service';
+import {TimerService} from './timer.service';
 
 @Injectable()
 export class PomodoroService {
   private _pomodoroCount: number;
 
-  constructor(private _store: Store<any>) {
+  constructor(private _store: Store<any>, private _settings: PomodoroSettingsService, private _timer: TimerService) {
     this._pomodoroCount = 0;
+    this._timer.setTime(_settings.DEFAULT_TASK_DURATION);
   }
 
   play(taskId: number) {
@@ -29,15 +31,5 @@ export class PomodoroService {
   stop() {
 
     this._store.dispatch({type: PomodorosActions.STOP});
-  }
-
-  next() {
-    this._pomodoroCount = (this._pomodoroCount + 1) % 4;
-    this._store.dispatch({type: PomodorosActions.STOP});
-    if (this._pomodoroCount === 0) {
-      return PomodoroStage.LONG_BREAK;
-    } else {
-      return PomodoroStage.SHORT_BREAK;
-    }
   }
 }
